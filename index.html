@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BioRhyme&family=Space+Mono&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-<body>
-  <div class="container-fluid">
-    <div class="todo-container">
-      <h1 class="display-4 title fw-bold">
-        Ceep
-      </h1>
-     
-      <div class="form-container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=BioRhyme&family=Space+Mono&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <section class="w-full">
+        <h1 class="display-4 text-center fw-bold">Tarefas</h1>
+      </section>
+
+      <section class="w-full">
         <form class="row g-3" action="">
           <div class="col-12 col-md-6">
-            <input class="form-control form-control-lg" 
-                   type="text" 
-                   placeholder="Digite seu item..." 
-                   data-form-input>
+            <basic-input
+                type="text"
+                id="title-task" 
+                placeholder="Digite seu item..."
+            ></basic-input>
           </div>
-          
+
           <div class="col-12 col-md-4">
-            <input type="datetime-local" 
-                   class="form-control form-control-lg" 
-                   placeholder="Data e hora" 
-                   data-form-date>
+            <basic-input
+                type="datetime-local"
+                id="date-task" 
+                placeholder="adiciona"
+            ></basic-input>
           </div>
-          
+
           <div class="col-12 col-md-2">
-            <button class="btn btn-primary btn-lg w-100" 
-                    type="button" 
-                    data-form-button>
-              <i class="material-icons me-1">add</i>
-              Novo Item
-            </button>
+            <basic-button
+                title="Novo Item" 
+                action="adiciona"
+            ></basic-button>
           </div>
         </form>
-      </div>
-      
-      <div class="list-container">
+      </section>
+
+      <div class="w-full">
         <ul class="list-group list-group-flush" data-list>
           <!-- Items serão adicionados aqui dinamicamente -->
         </ul>
       </div>
     </div>
-  </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
     <script type="module" src="main.js"></script>
-</body>
+  </body>
 </html>

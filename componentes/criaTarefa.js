@@ -6,10 +6,10 @@ import BotaoDeleta from './deletaTarefa.js'
 export const handleNovoItem = (evento) => {
     evento.preventDefault()
     const tarefas = JSON.parse(localStorage.getItem('tarefas'))||[]
-    const input = document.querySelector('[data-form-input]')
+    const input = document.querySelector('#title-task')
     const valor = input.value
 
-    const calendario = document.querySelector('[data-form-date]')
+    const calendario = document.querySelector('#date-task')
     const data = moment(calendario.value)
 
     const dataFormatada = data.format('DD/MM/YYYY')
@@ -26,14 +26,22 @@ export const handleNovoItem = (evento) => {
     input.value = " "
 
     carregaTarefa()
-    
 }
 
 export const Tarefa = ({ valor, dataFormatada }) => {
 
     const tarefa = document.createElement('li')
     tarefa.classList.add('task')
-    const conteudo = `<p class="content">${dataFormatada} * ${valor}</p>`
+
+    const conteudo = `    
+        <div class="card">
+            <div class="card-body">
+                ${dataFormatada} * ${valor}
+            </div>
+        </div>
+    `;
+
+
 
     tarefa.innerHTML = conteudo
 
