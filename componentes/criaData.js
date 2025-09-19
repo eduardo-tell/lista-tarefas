@@ -1,22 +1,22 @@
-import {Tarefa} from './criaTarefa.js'
+import { Tarefa } from './criaTarefa.js'
 
 export const criaData = (data) => {
-    const tarefas = JSON.parse(localStorage.getItem('tarefas'))||[]
-    const dataMoment = moment(data, 'DD/MM/YYYY')
-    const dataTopo = document.createElement('li')
-    const conteudo = `<p class="content-data">${dataMoment.format('DD/MM/YYYY')}</p>`
+    const tarefas = JSON.parse(localStorage.getItem('tarefas'))||[];
+    const dataMoment = moment(data, 'DD/MM/YYYY');
+    const secaoPorData = document.createElement('ul');
+    secaoPorData.classList.add('list-unstyled');
+    const conteudo = `<h3 class="content-data">${dataMoment.format('DD/MM/YYYY')}</h3>`;
 
-    dataTopo.innerHTML = conteudo
+    secaoPorData.innerHTML = conteudo;
 
-    tarefas.forEach((tarefa => { 
-        const dia = moment(tarefa.dataFormatada, 'DD/MM/YYYY')
-        const diff = dataMoment.diff(dia)
+    tarefas.forEach(((tarefa, id) => { 
+        const dia = moment(tarefa.dataFormatada, 'DD/MM/YYYY');
+        const diff = dataMoment.diff(dia);
 
-        if(diff === 0){
-            dataTopo.appendChild(Tarefa(tarefa))
+        if (diff === 0) {
+            secaoPorData.appendChild(Tarefa(tarefa, id));
         }
-        
-    }))
+    }));
 
-    return dataTopo
+    return secaoPorData;
 }

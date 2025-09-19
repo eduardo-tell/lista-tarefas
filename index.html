@@ -15,6 +15,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+
+    <style>:root{--primary:#000;--secundary:#444444;--tertiary:#a3f7bf;--default:#fcfcfc}.bg-primary{background-color:var(--primary)}.bg-secundary{background-color:var(--secundary)}.bg-tertiary{background-color:var(--tertiary)}.bg-default{background-color:var(--default)}.text-primary{color:var(--primary)}.text-secundary{color:var(--secundary)}.text-tertiary{color:var(--tertiary)}.text-default{color:var(--default)}.bg-primary-hover:hover{background-color:var(--primary)}.bg-secundary-hover:hover{background-color:var(--secundary)}.bg-tertiary-hover:hover{background-color:var(--tertiary)}.bg-default-hover:hover{background-color:var(--default)}.text-primary-hover:hover{color:var(--primary)}.text-secundary-hover:hover{color:var(--secundary)}.text-tertiary-hover:hover{color:var(--tertiary)}.text-default-hover:hover{color:var(--default)}</style>
   </head>
   <body>
     <div class="container">
@@ -27,15 +29,15 @@
           <div class="col-12 col-md-6">
             <basic-input
                 type="text"
-                id="title-task" 
-                placeholder="Digite seu item..."
+                class="title-task" 
+                placeholder="Título da tarefa"
             ></basic-input>
           </div>
 
           <div class="col-12 col-md-4">
             <basic-input
                 type="datetime-local"
-                id="date-task" 
+                class="date-task" 
                 placeholder="adiciona"
             ></basic-input>
           </div>
@@ -43,17 +45,13 @@
           <div class="col-12 col-md-2">
             <basic-button
                 title="Novo Item" 
-                action="adiciona"
+                action="nova-tarefa"
             ></basic-button>
           </div>
         </form>
       </section>
 
-      <div class="w-full">
-        <ul class="list-group list-group-flush" data-list>
-          <!-- Items serão adicionados aqui dinamicamente -->
-        </ul>
-      </div>
+      <div class="w-full my-5" data-list></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
