@@ -30,69 +30,65 @@ export const handleNovoItem = (evento) => {
 }
 
 export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
-    const tarefa = document.createElement('li')
-    tarefa.classList.add('list-group-item')
+    const tarefa = document.createElement('li');
+    tarefa.classList.add('list-group-item');
 
     if (concluida) {
-        tarefa.classList.add('active')
+        tarefa.classList.add('active');
     }
 
-    // wrapper correto como elemento
-    const conteudoWrapper = document.createElement('div')
-    conteudoWrapper.classList.add('card')
+    const conteudoWrapper = document.createElement('div');
+    conteudoWrapper.classList.add('card', 'shadow-sm', 'mb-3');
 
-    // Card topo
-    const topoCard = document.createElement('div')
-    topoCard.classList.add('card-header')
+    const cardCorpo = document.createElement('div');
+    cardCorpo.classList.add('card-body');
 
-    // Card Corpo
-    const cardCorpo = document.createElement('div')
-    cardCorpo.classList.add('card-body')
+    const row = document.createElement('div');
+    row.classList.add('row', 'align-items-center');
 
-    // Card Conteúdo
-    const cardConteudo = document.createElement('div')
-    cardConteudo.classList.add('card-body')
+    const colInfo = document.createElement('div');
+    colInfo.classList.add('col');
 
-    // Card Rodapé
-    const cardRodape = document.createElement('div')
-    cardRodape.classList.add('d-flex')
+    const elTitulo = document.createElement('h5');
+    elTitulo.classList.add('card-title', 'mb-1');
+    elTitulo.textContent = titulo;
 
-    // span da data
-    const elDataFormatada = document.createElement('span')
-    elDataFormatada.classList.add('card-text')
-    elDataFormatada.textContent = dataFormatada
+    const elDataFormatada = document.createElement('p');
+    elDataFormatada.classList.add('card-text', 'text-muted', 'mb-0');
+    elDataFormatada.textContent = `Para: ${dataFormatada}`;
 
-    // Título
-    const elTitulo = document.createElement('span')
-    elTitulo.classList.add('card-title', 'd-block')
-    elTitulo.textContent = titulo
+    if (!concluida) {
+        const badge = document.createElement('span')
+        badge.classList.add('badge', 'bg-danger', 'ms-2');
+        badge.textContent = 'Pendente';
+        elDataFormatada.appendChild(badge);
+    }
 
-    // Botão concluir
-    const elBotaoConcluir = document.createElement('basic-button')
-    elBotaoConcluir.setAttribute('title', 'Concluir')
-    elBotaoConcluir.setAttribute('action', `concluir-${id}`)
-    elBotaoConcluir.addEventListener('click', () => concluirTarefa(carregaTarefa, id))
+    colInfo.appendChild(elTitulo);
+    colInfo.appendChild(elDataFormatada);
 
-    // Botão deletar
-    const elBotaoDeletar = document.createElement('basic-button')
-    elBotaoDeletar.setAttribute('title', 'Deletar')
-    elBotaoDeletar.setAttribute('action', `deletar-${id}`)
-    elBotaoDeletar.addEventListener('click', () => deletarTarefa(carregaTarefa, id))
+    const colAcoes = document.createElement('div');
+    colAcoes.classList.add('col-auto');
 
-    // Incluindo
-    topoCard.appendChild(elDataFormatada)
+    const elBotaoConcluir = document.createElement('button');
+    elBotaoConcluir.classList.add('btn', 'btn-sm', 'btn-outline-success', 'me-2');
+    elBotaoConcluir.textContent = 'Concluir';
+    elBotaoConcluir.addEventListener('click', () => concluirTarefa(carregaTarefa, id));
 
-    cardConteudo.appendChild(elTitulo)
+    const elBotaoDeletar = document.createElement('button');
+    elBotaoDeletar.classList.add('btn', 'btn-sm', 'btn-outline-danger');
+    elBotaoDeletar.textContent = 'Deletar';
+    elBotaoDeletar.addEventListener('click', () => deletarTarefa(carregaTarefa, id));
 
-    cardRodape.appendChild(elBotaoDeletar)
-    cardRodape.appendChild(elBotaoConcluir)
+    colAcoes.appendChild(elBotaoConcluir);
+    colAcoes.appendChild(elBotaoDeletar);
 
-    cardConteudo.appendChild(cardRodape)
+    row.appendChild(colInfo);
+    row.appendChild(colAcoes);
 
-    conteudoWrapper.appendChild(topoCard)
-    conteudoWrapper.appendChild(cardConteudo)
-
-    tarefa.appendChild(conteudoWrapper)
+    cardCorpo.appendChild(row);
+    conteudoWrapper.appendChild(cardCorpo);
+    tarefa.appendChild(conteudoWrapper);
 
     return tarefa
 }
