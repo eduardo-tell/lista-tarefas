@@ -1,6 +1,7 @@
-import { carregaTarefa } from './carregaTarefa.js'
-import concluirTarefa from './concluiTarefa.js'
-import deletarTarefa from './deletaTarefa.js'
+import { carregaTarefa } from './carregaTarefa.js';
+import concluirTarefa from './concluiTarefa.js';
+import deletarTarefa from './deletaTarefa.js';
+import { filtraTarefa } from './filtraTarefa.js';
 
 export const handleNovoItem = (evento) => {
     evento.preventDefault()
@@ -27,6 +28,7 @@ export const handleNovoItem = (evento) => {
     input.value = " ";
 
     carregaTarefa();
+    filtraTarefa();
 }
 
 export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
