@@ -1,4 +1,4 @@
-const deletarTarefa = (atualiza, id) => { 
+export const deletarTarefa = (atualiza, id) => { 
     const index = id;
     const tarefasCadastradas = JSON.parse(localStorage.getItem('tarefas'));
 
@@ -7,5 +7,3 @@ const deletarTarefa = (atualiza, id) => {
 
     atualiza();
 };
-
-export default deletarTarefa;

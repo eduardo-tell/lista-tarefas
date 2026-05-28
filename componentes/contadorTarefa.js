@@ -1,6 +1,5 @@
-export const filtraTarefa = () => {
+export const contadorTarefa = () => {
     const tarefas = JSON.parse(localStorage.getItem('tarefas'))||[];
-    console.log(tarefas);
 
     var naoConcluidas = tarefas.filter(function(obj) {
         return obj.concluida == false;

@@ -4,6 +4,7 @@ import { carregaTarefa } from './componentes/carregaTarefa.js';
 import { filtraTarefa } from './componentes/filtraTarefa.js';
 
 carregaTarefa();
+filtraTarefa();
 
 
 
