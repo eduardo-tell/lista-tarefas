@@ -39,6 +39,7 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
 
     const conteudoWrapper = document.createElement('div');
     conteudoWrapper.classList.add('card', 'shadow-sm', 'mb-3');
+    conteudoWrapper.classList.add(`card--${concluida ? 'completed' : 'pending'}`);
 
     const cardCorpo = document.createElement('div');
     cardCorpo.classList.add('card-body');

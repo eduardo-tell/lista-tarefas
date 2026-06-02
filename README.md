@@ -3,4 +3,3 @@ Sistema de lista de tarefas, usando apenas web-components, dados ficam salvos na
 
 # Próximos passos
 1. Implementar filtro "Todas", "Pendentes" e "Completadas".
-2. Atualizar os marcadores "Todas", "Pendentes" e "Completadas" do cabeçalho.

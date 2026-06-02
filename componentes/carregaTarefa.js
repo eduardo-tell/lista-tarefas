@@ -1,6 +1,7 @@
 import { ordenaDatas, removeDatasRepetidas } from "../service/data.js"
 import { criaData } from "./criaData.js"
 import { contadorTarefa } from "./contadorTarefa.js"
+import { filtraTarefa } from "./filtraTarefa.js"
 
 export const carregaTarefa = () => { 
     const lista = document.querySelector('[data-list]');
@@ -16,4 +17,5 @@ export const carregaTarefa = () => {
     });
 
     contadorTarefa();
+    filtraTarefa();
 };
