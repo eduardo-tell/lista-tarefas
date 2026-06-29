@@ -5,7 +5,7 @@ export const criaData = (data) => {
     const dataMoment = moment(data, 'DD/MM/YYYY');
     const secaoPorData = document.createElement('ul');
     secaoPorData.classList.add('list-unstyled');
-    const conteudo = `<h3 class="content-data">${dataMoment.format('DD/MM/YYYY')}</h3>`;
+    const conteudo = `<h3 class="card-title text-primary fs-4">${dataMoment.format('DD/MM/YYYY')}</h3>`;
 
     secaoPorData.innerHTML = conteudo;
 
