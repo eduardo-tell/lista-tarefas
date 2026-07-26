@@ -31,14 +31,14 @@ export const handleNovoItem = (evento) => {
 
 export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
     const tarefa = document.createElement('li');
-    tarefa.classList.add('list-group-item');
+    // tarefa.classList.add('list-group-item');
 
     if (concluida) {
         tarefa.classList.add('active');
     }
 
     const conteudoWrapper = document.createElement('div');
-    conteudoWrapper.classList.add('card', 'shadow-sm', 'mb-3');
+    conteudoWrapper.classList.add('border-bottom', 'mb-sm-3', 'py-sm-4');
     conteudoWrapper.classList.add(`card--${concluida ? 'completed' : 'pending'}`);
 
     const cardCorpo = document.createElement('div');

@@ -53,49 +53,42 @@
 
     <main class="container">
         <div class="row justify-content-center">
-            <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex justify-content-end align-items-center mb-3">
                 <div class="btn-group" id="filter-list" data-filter-list role="group">
                     <button type="button" class="btn btn-outline-secondary active" id="filterAll">Todas</button>
                     <button type="button" class="btn btn-outline-secondary" id="filterPending">Pendentes</button>
                     <button type="button" class="btn btn-outline-secondary" id="filterCompleted">Completadas</button>
                 </div>
             </div>
+
+            <form id="taskForm" class="mb-3">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="taskTitle" class="form-label">Título</label>
+                        <basic-input
+                            type="text"
+                            class="title-task" 
+                            placeholder="Título da tarefa"
+                        ></basic-input>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="taskDate" class="form-label">Data</label>
+                        <basic-input
+                            type="datetime-local"
+                            class="date-task" 
+                            placeholder="adiciona"
+                        ></basic-input>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <basic-button
+                            title="Adicione" 
+                            action="nova-tarefa"
+                        ></basic-button>
+                    </div>
+                </div>
+            </form>
             
             <div data-list>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mb-4">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <h3 class="card-title"><i class="bi bi-plus-circle"></i>Adicionar nova</h3>
-                    <form id="taskForm">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="taskTitle" class="form-label">Título</label>
-                                <basic-input
-                                    type="text"
-                                    class="title-task" 
-                                    placeholder="Título da tarefa"
-                                ></basic-input>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="taskDate" class="form-label">Data</label>
-                                <basic-input
-                                    type="datetime-local"
-                                    class="date-task" 
-                                    placeholder="adiciona"
-                                ></basic-input>
-                            </div>
-                            <div class="col-md-2 d-flex align-items-end">
-                                <basic-button
-                                    title="Adicione" 
-                                    action="nova-tarefa"
-                                ></basic-button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </main>
