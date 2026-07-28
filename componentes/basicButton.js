@@ -62,7 +62,7 @@ class BasicButton extends HTMLElement {
             this._button = button;
         }
 
-        this._button.className = `btn ${variantClass} btn-lg w-100`;
+        this._button.className = `btn ${variantClass} w-100`;
         this._button.textContent = title;
         this._button.disabled = isDisabled;
     }

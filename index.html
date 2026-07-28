@@ -17,10 +17,74 @@
     />
 
     <style>
-        :root{--primary:#29A29D !important;--secundary:#A3F7BF;--tertiary:#a3f7bf;--default:#fcfcfc}.container{max-width: 740px !important}.bg-primary{background-color:var(--primary)!important}.bg-secundary{background-color:var(--secundary)!important}.bg-tertiary{background-color:var(--tertiary)!important}.bg-default{background-color:var(--default)}.text-primary{color:var(--primary)}.text-secundary{color:var(--secundary)}.text-tertiary{color:var(--tertiary)}.text-default{color:var(--default)}.bg-primary-hover:hover{background-color:var(--primary)}.bg-secundary-hover:hover{background-color:var(--secundary)}.bg-tertiary-hover:hover{background-color:var(--tertiary)}.bg-default-hover:hover{background-color:var(--default)}.text-primary-hover:hover{color:var(--primary)}.text-secundary-hover:hover{color:var(--secundary)}.text-tertiary-hover:hover{color:var(--tertiary)}.text-default-hover:hover{color:var(--default)}.hide{display:none;}
-        
-        .slideInUp {
+        :root {
+            /* --- Sobrescrevendo variáveis nativas do Bootstrap --- */
+            --bs-primary: #29A29D;
+            --bs-primary-rgb: 41, 162, 157;
+            --bs-secondary: #A3F7BF;
+            --bs-secondary-rgb: 163, 247, 191;
+
+            /* --- Variáveis próprias do projeto --- */
+            --primary: #29A29D;
+            --secundary: #A3F7BF;
+            --tertiary: #A3F7BF;
+            --default: #FCFCFC;
+        }
+
+        .container {
+            max-width: 740px !important;
+        }
+
+        /* --- Background --- */
+        .bg-primary { background-color: var(--primary) !important; }
+        .bg-secundary { background-color: var(--secundary) !important; }
+        .bg-tertiary { background-color: var(--tertiary) !important; }
+        .bg-default { background-color: var(--default) !important; }
+
+        /* --- Texto --- */
+        .text-primary { color: var(--primary) !important; }
+        .text-secundary { color: var(--secundary) !important; }
+        .text-tertiary { color: var(--tertiary) !important; }
+        .text-default { color: var(--default) !important; }
+
+        .text-primary-hover:hover { color: var(--primary) !important; }
+        .text-secundary-hover:hover { color: var(--secundary) !important; }
+        .text-tertiary-hover:hover { color: var(--tertiary) !important; }
+        .text-default-hover:hover { color: var(--default) !important; }
+        .text-white-hover:hover { color: white !important; }
+
+        /* --- Bordas --- */
+        .border-primary { border-color: var(--primary) !important; }
+        .border-secundary { border-color: var(--secundary) !important; }
+        .border-tertiary { border-color: var(--tertiary) !important; }
+        .border-default { border-color: var(--default) !important; }
+
+        /* --- Background hover --- */
+        .bg-primary-hover:hover { background-color: var(--primary) !important; }
+        .bg-secundary-hover:hover { background-color: var(--secundary) !important; }
+        .bg-tertiary-hover:hover { background-color: var(--tertiary) !important; }
+        .bg-default-hover:hover { background-color: var(--default) !important; }
+
+        /* --- Texto hover --- */
+        .text-primary-hover:hover { color: var(--primary) !important; }
+        .text-secundary-hover:hover { color: var(--secundary) !important; }
+        .text-tertiary-hover:hover { color: var(--tertiary) !important; }
+        .text-default-hover:hover { color: var(--default) !important; }
+
+        /* --- Borda hover --- */
+        .border-primary-hover:hover { border-color: var(--primary) !important; }
+        .border-secundary-hover:hover { border-color: var(--secundary) !important; }
+        .border-tertiary-hover:hover { border-color: var(--tertiary) !important; }
+        .border-default-hover:hover { border-color: var(--default) !important; }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 .25rem rgb(41 162 157 / 20%) !important;
+        }
+
+        .card-effect {
+            opacity: 0;
             animation: slideInUp 1s ease-out 0.2s both;
+            animation-delay: var(--delay, 0s);
         }
 
         @keyframes slideInUp {
@@ -28,12 +92,11 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
-            
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }    
+        }
     </style>
   </head>
   <body>
@@ -72,10 +135,9 @@
     <main class="container">
         <div class="row justify-content-center">
             <div class="d-flex justify-content-end align-items-center mb-3">
-                <div class="btn-group" id="filter-list" data-filter-list role="group">
-                    <button type="button" class="btn btn-outline-secondary active" id="filterAll">Todas</button>
-                    <button type="button" class="btn btn-outline-secondary" id="filterPending">Pendentes</button>
-                    <button type="button" class="btn btn-outline-secondary" id="filterCompleted">Completadas</button>
+                <div class="flex" id="filter-list" data-filter-list role="group">
+                    <button type="button" class="btn border border-primary text-primary bg-primary-hover text-white-hover" id="filterPending">Pendentes</button>
+                    <button type="button" class="btn border border-primary text-primary bg-primary-hover text-white-hover" id="filterCompleted">Completadas</button>
                 </div>
             </div>
 

@@ -13,8 +13,6 @@ export const carregaTarefa = () => {
     ordenaDatas(dataUnicas);
 
     dataUnicas.forEach((dia, i) => {
-        console.log(dia, i);
-
         lista.appendChild(criaData(dia));
     });
 
