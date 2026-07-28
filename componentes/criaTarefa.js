@@ -39,7 +39,8 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
 
     const conteudoWrapper = document.createElement('div');
     conteudoWrapper.classList.add('border-bottom', 'mb-sm-3', 'py-sm-4');
-    conteudoWrapper.classList.add(`card--${concluida ? 'completed' : 'pending'}`);
+    conteudoWrapper.classList.add(`card-effect`, `card--${concluida ? 'completed' : 'pending'}`);
+    conteudoWrapper.style.setProperty('--delay', `${id * 0.08}s`);
 
     const cardCorpo = document.createElement('div');
     cardCorpo.classList.add('card-body');

@@ -16,7 +16,25 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
 
-    <style>:root{--primary:#29A29D !important;--secundary:#A3F7BF;--tertiary:#a3f7bf;--default:#fcfcfc}.container{max-width: 740px !important}.bg-primary{background-color:var(--primary)!important}.bg-secundary{background-color:var(--secundary)!important}.bg-tertiary{background-color:var(--tertiary)!important}.bg-default{background-color:var(--default)}.text-primary{color:var(--primary)}.text-secundary{color:var(--secundary)}.text-tertiary{color:var(--tertiary)}.text-default{color:var(--default)}.bg-primary-hover:hover{background-color:var(--primary)}.bg-secundary-hover:hover{background-color:var(--secundary)}.bg-tertiary-hover:hover{background-color:var(--tertiary)}.bg-default-hover:hover{background-color:var(--default)}.text-primary-hover:hover{color:var(--primary)}.text-secundary-hover:hover{color:var(--secundary)}.text-tertiary-hover:hover{color:var(--tertiary)}.text-default-hover:hover{color:var(--default)}.hide{display:none;}</style>
+    <style>
+        :root{--primary:#29A29D !important;--secundary:#A3F7BF;--tertiary:#a3f7bf;--default:#fcfcfc}.container{max-width: 740px !important}.bg-primary{background-color:var(--primary)!important}.bg-secundary{background-color:var(--secundary)!important}.bg-tertiary{background-color:var(--tertiary)!important}.bg-default{background-color:var(--default)}.text-primary{color:var(--primary)}.text-secundary{color:var(--secundary)}.text-tertiary{color:var(--tertiary)}.text-default{color:var(--default)}.bg-primary-hover:hover{background-color:var(--primary)}.bg-secundary-hover:hover{background-color:var(--secundary)}.bg-tertiary-hover:hover{background-color:var(--tertiary)}.bg-default-hover:hover{background-color:var(--default)}.text-primary-hover:hover{color:var(--primary)}.text-secundary-hover:hover{color:var(--secundary)}.text-tertiary-hover:hover{color:var(--tertiary)}.text-default-hover:hover{color:var(--default)}.hide{display:none;}
+        
+        .slideInUp {
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }    
+    </style>
   </head>
   <body>
     <header class="bg-primary text-white py-4 mb-4 shadow-sm">
