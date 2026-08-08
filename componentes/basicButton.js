@@ -2,7 +2,7 @@ import { handleNovoItem } from './criaTarefa.js'
 
 class BasicButton extends HTMLElement {
     static get observedAttributes() {
-        return ['title', 'action', 'disabled', 'variant'];
+        return ['title', 'action', 'disabled', 'variant', 'styleClass'];
     }
 
     constructor() {
@@ -62,7 +62,9 @@ class BasicButton extends HTMLElement {
             this._button = button;
         }
 
-        this._button.className = `btn ${variantClass} w-100`;
+        const hostClasses = this.className; 
+
+        this._button.className = `btn w-100 ${variantClass}`;
         this._button.textContent = title;
         this._button.disabled = isDisabled;
     }

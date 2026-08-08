@@ -73,8 +73,17 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
     colAcoes.classList.add('col-auto');
 
     const elBotaoConcluir = document.createElement('button');
-    elBotaoConcluir.classList.add('btn', 'btn-sm', 'btn-outline-success', 'me-2');
-    elBotaoConcluir.textContent = 'Concluir';
+
+    if (concluida) {
+        elBotaoConcluir.textContent = 'Concluído';
+        elBotaoConcluir.classList.add('text-white', 'bg-primary');
+    } else {
+        elBotaoConcluir.classList.add('text-primary', 'text-white-hover', 'bg-primary-hover');
+        elBotaoConcluir.textContent = 'Concluir';
+    }
+
+    elBotaoConcluir.classList.add('btn', 'btn-sm', 'border-primary', 'me-2');
+
     elBotaoConcluir.addEventListener('click', () => concluirTarefa(carregaTarefa, id));
 
     const elBotaoDeletar = document.createElement('button');
