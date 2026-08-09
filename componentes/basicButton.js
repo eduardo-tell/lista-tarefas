@@ -38,14 +38,14 @@ class BasicButton extends HTMLElement {
     }
 
     _getVariantClass() {
-        const variant = this.getAttribute('variant') || 'primary';
+        const variant = this.getAttribute('variant') || 'secondary';
         const classMap = {
-            primary: 'bg-tertiary bg-primary-hover text-default-hover',
+            primary: 'bg-primary bg-secundary-hover text-primary-hover',
             secondary: 'bg-secundary bg-default-hover text-default',
             danger: 'bg-danger text-white',
             outline: 'bg-transparent border border-secondary text-secondary'
         };
-        return classMap[variant] || classMap.primary;
+        return classMap[variant] || classMap.secondary;
     }
 
     _render() {

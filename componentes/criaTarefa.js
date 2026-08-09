@@ -82,12 +82,12 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
         elBotaoConcluir.textContent = 'Concluir';
     }
 
-    elBotaoConcluir.classList.add('btn', 'btn-sm', 'border-primary', 'me-2');
+    elBotaoConcluir.classList.add('btn', 'border-primary', 'me-2');
 
     elBotaoConcluir.addEventListener('click', () => concluirTarefa(carregaTarefa, id));
 
     const elBotaoDeletar = document.createElement('button');
-    elBotaoDeletar.classList.add('btn', 'btn-sm', 'btn-outline-danger');
+    elBotaoDeletar.classList.add('btn', 'btn-outline-danger');
     elBotaoDeletar.textContent = 'Deletar';
     elBotaoDeletar.addEventListener('click', () => deletarTarefa(carregaTarefa, id));
 
