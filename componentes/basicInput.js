@@ -7,7 +7,7 @@ class BasicInput extends HTMLElement {
         this.innerHTML = `
            <input
                 type="${type}"
-                class="form-control form-control border border-primary ${style}"
+                class="form-control form-control border border-2 border-primary rounded-2 ${style}"
                 aria-describedby="${placeholder}"
                 placeholder="${placeholder}"
             /> 

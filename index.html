@@ -34,43 +34,43 @@
 
         /* --- Background --- */
         .bg-primary { background-color: var(--bs-primary) !important; }
-        .bg-secundary { background-color: var(--bs-secundary) !important; }
+        .bg-secondary { background-color: var(--bs-secondary) !important; }
         .bg-tertiary { background-color: var(--tertiary) !important; }
         .bg-default { background-color: var(--default) !important; }
 
         /* --- Texto --- */
         .text-primary { color: var(--bs-primary) !important; }
-        .text-secundary { color: var(--bs-secundary) !important; }
+        .text-secondary { color: var(--bs-secondary) !important; }
         .text-tertiary { color: var(--tertiary) !important; }
         .text-default { color: var(--default) !important; }
 
         .text-primary-hover:hover { color: var(--bs-primary) !important; }
-        .text-secundary-hover:hover { color: var(--bs-secundary) !important; }
+        .text-secondary-hover:hover { color: var(--bs-secondary) !important; }
         .text-tertiary-hover:hover { color: var(--tertiary) !important; }
         .text-default-hover:hover { color: var(--default) !important; }
         .text-white-hover:hover { color: white !important; }
 
         /* --- Bordas --- */
         .border-primary { border-color: var(--bs-primary) !important; }
-        .border-secundary { border-color: var(--bs-secundary) !important; }
+        .border-secondary { border-color: var(--bs-secondary) !important; }
         .border-tertiary { border-color: var(--tertiary) !important; }
         .border-default { border-color: var(--default) !important; }
 
         /* --- Background hover --- */
         .bg-primary-hover:hover { background-color: var(--bs-primary) !important; }
-        .bg-secundary-hover:hover { background-color: var(--bs-secundary) !important; }
+        .bg-secondary-hover:hover { background-color: var(--bs-secondary) !important; }
         .bg-tertiary-hover:hover { background-color: var(--tertiary) !important; }
         .bg-default-hover:hover { background-color: var(--default) !important; }
 
         /* --- Texto hover --- */
         .text-primary-hover:hover { color: var(--bs-primary) !important; }
-        .text-secundary-hover:hover { color: var(--bs-secundary) !important; }
+        .text-secondary-hover:hover { color: var(--bs-secondary) !important; }
         .text-tertiary-hover:hover { color: var(--tertiary) !important; }
         .text-default-hover:hover { color: var(--default) !important; }
 
         /* --- Borda hover --- */
         .border-primary-hover:hover { border-color: var(--bs-primary) !important; }
-        .border-secundary-hover:hover { border-color: var(--bs-secundary) !important; }
+        .border-secondary-hover:hover { border-color: var(--bs-secondary) !important; }
         .border-tertiary-hover:hover { border-color: var(--tertiary) !important; }
         .border-default-hover:hover { border-color: var(--default) !important; }
 
@@ -114,19 +114,19 @@
                 <div class="col-md-6">
                     <div class="row text-center">
                         <div class="col-4">
-                            <div class="bg-secundary bg-opacity-10 rounded p-2">
+                            <div class="bg-secondary bg-opacity-10 rounded p-2">
                                 <div class="h4 mb-0 text-black" id="totalTasks">0</div>
                                 <small class="text-black">Todas</small>
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="bg-secundary bg-opacity-10 rounded p-2">
+                            <div class="bg-secondary bg-opacity-10 rounded p-2">
                                 <div class="h4 mb-0 text-black" id="completedTasks">0</div>
                                 <small class="text-black">Completadas</small>
                             </div>
                         </div>
                         <div class="col-4">
-                            <div class="bg-secundary bg-opacity-10 rounded p-2">
+                            <div class="bg-secondary bg-opacity-10 rounded p-2">
                                 <div class="h4 mb-0 text-black" id="pendingTasks">0</div>
                                 <small class="text-black">Pedentes</small>
                             </div>
@@ -141,15 +141,47 @@
         <div class="row justify-content-center">
             <div class="d-flex justify-content-end align-items-center mb-3">
                 <div class="flex" id="filter-list" data-filter-list role="group">
-                    <button type="button" class="btn border-primary text-primary bg-primary-hover text-white-hover" id="filterPending">Pendentes</button>
-                    <button type="button" class="btn border-primary text-primary bg-primary-hover text-white-hover" id="filterCompleted">Completadas</button>
+                    <!-- 
+                    <button 
+                        type="button" 
+                        class="btn border-primary text-primary bg-primary-hover text-white-hover" 
+                        id="filterPending"
+                    >
+                        Pendentes
+                    </button>
+                    -->
+                    
+                    <basic-button
+                        title="Pendentes" 
+                        action="nova-tarefa"
+                        id="filterPending"
+                        variant="outline"
+                        class="border-primary text-primary bg-primary-hover text-white-hover"
+                    ></basic-button>
+
+                    <!-- 
+                    <button 
+                        type="button" 
+                        class="btn border-primary text-primary bg-primary-hover text-white-hover" id="filterCompleted"
+                    >
+                        Completadas
+                    </button> 
+                    -->
+
+                    <basic-button
+                        title="Completadas" 
+                        action="nova-tarefa"
+                        id="filterPending"
+                        variant="outline"
+                        class="border-primary text-primary bg-primary-hover text-white-hover"
+                    ></basic-button>
                 </div>
             </div>
 
             <form id="taskForm" class="mb-3">
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label for="taskTitle" class="form-label">Título</label>
+                        <label for="taskTitle" class="form-label fw-medium">Título</label>
                         <basic-input
                             type="text"
                             class="title-task" 
@@ -157,7 +189,7 @@
                         ></basic-input>
                     </div>
                     <div class="col-md-4">
-                        <label for="taskDate" class="form-label">Data</label>
+                        <label for="taskDate" class="form-label fw-medium">Data</label>
                         <basic-input
                             type="datetime-local"
                             class="date-task" 
