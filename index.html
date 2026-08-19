@@ -22,6 +22,7 @@
             --bs-primary: #29A29D;
             --bs-primary-rgb: 41, 162, 157;
             --bs-secondary: #A3F7BF;
+            --bs-body-color: #222831;
 
             /* --- Variáveis próprias do projeto --- */
             --tertiary: #A3F7BF;
@@ -38,35 +39,31 @@
         .bg-tertiary { background-color: var(--tertiary) !important; }
         .bg-default { background-color: var(--default) !important; }
 
+        /* --- Background hover --- */
+        .bg-primary-hover:hover { background-color: var(--bs-primary) !important; }
+        .bg-secondary-hover:hover { background-color: var(--bs-secondary) !important; }
+        .bg-tertiary-hover:hover { background-color: var(--tertiary) !important; }
+        .bg-default-hover:hover { background-color: var(--default) !important; }
+        .bg-transparent-hover:hover { background-color: var(--default) !important; }
+
         /* --- Texto --- */
         .text-primary { color: var(--bs-primary) !important; }
         .text-secondary { color: var(--bs-secondary) !important; }
         .text-tertiary { color: var(--tertiary) !important; }
         .text-default { color: var(--default) !important; }
 
+        /* --- Texto hover --- */
         .text-primary-hover:hover { color: var(--bs-primary) !important; }
         .text-secondary-hover:hover { color: var(--bs-secondary) !important; }
         .text-tertiary-hover:hover { color: var(--tertiary) !important; }
-        .text-default-hover:hover { color: var(--default) !important; }
         .text-white-hover:hover { color: white !important; }
+        .text-default-hover:hover { color: var(--bs-body-color) !important; }
 
         /* --- Bordas --- */
         .border-primary { border-color: var(--bs-primary) !important; }
         .border-secondary { border-color: var(--bs-secondary) !important; }
         .border-tertiary { border-color: var(--tertiary) !important; }
         .border-default { border-color: var(--default) !important; }
-
-        /* --- Background hover --- */
-        .bg-primary-hover:hover { background-color: var(--bs-primary) !important; }
-        .bg-secondary-hover:hover { background-color: var(--bs-secondary) !important; }
-        .bg-tertiary-hover:hover { background-color: var(--tertiary) !important; }
-        .bg-default-hover:hover { background-color: var(--default) !important; }
-
-        /* --- Texto hover --- */
-        .text-primary-hover:hover { color: var(--bs-primary) !important; }
-        .text-secondary-hover:hover { color: var(--bs-secondary) !important; }
-        .text-tertiary-hover:hover { color: var(--tertiary) !important; }
-        .text-default-hover:hover { color: var(--default) !important; }
 
         /* --- Borda hover --- */
         .border-primary-hover:hover { border-color: var(--bs-primary) !important; }
@@ -105,30 +102,30 @@
     </style>
   </head>
   <body>
-    <header class="bg-primary text-white py-4 mb-4 shadow-sm">
+    <header class="bg-primary py-4 mb-4 shadow-sm">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="mb-0">Tarefas</h1>
+                    <h1 class="mb-0 text-white">Tarefas</h1>
                 </div>
                 <div class="col-md-6">
                     <div class="row text-center">
                         <div class="col-4">
                             <div class="bg-secondary bg-opacity-10 rounded p-2">
-                                <div class="h4 mb-0 text-black" id="totalTasks">0</div>
-                                <small class="text-black">Todas</small>
+                                <div class="h4 mb-0" id="totalTasks">0</div>
+                                <small>Todas</small>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="bg-secondary bg-opacity-10 rounded p-2">
-                                <div class="h4 mb-0 text-black" id="completedTasks">0</div>
-                                <small class="text-black">Completadas</small>
+                                <div class="h4 mb-0" id="completedTasks">0</div>
+                                <small>Completadas</small>
                             </div>
                         </div>
                         <div class="col-4">
                             <div class="bg-secondary bg-opacity-10 rounded p-2">
-                                <div class="h4 mb-0 text-black" id="pendingTasks">0</div>
-                                <small class="text-black">Pedentes</small>
+                                <div class="h4 mb-0" id="pendingTasks">0</div>
+                                <small>Pedentes</small>
                             </div>
                         </div>
                     </div>
@@ -140,40 +137,19 @@
     <main class="container">
         <div class="row justify-content-center">
             <div class="d-flex justify-content-end align-items-center mb-3">
-                <div class="flex" id="filter-list" data-filter-list role="group">
-                    <!-- 
-                    <button 
-                        type="button" 
-                        class="btn border-primary text-primary bg-primary-hover text-white-hover" 
-                        id="filterPending"
-                    >
-                        Pendentes
-                    </button>
-                    -->
-                    
+                <div class="d-flex gap-2" id="filter-list" data-filter-list role="group">
                     <basic-button
                         title="Pendentes" 
                         action="nova-tarefa"
                         id="filterPending"
                         variant="outline"
-                        class="border-primary text-primary bg-primary-hover text-white-hover"
                     ></basic-button>
-
-                    <!-- 
-                    <button 
-                        type="button" 
-                        class="btn border-primary text-primary bg-primary-hover text-white-hover" id="filterCompleted"
-                    >
-                        Completadas
-                    </button> 
-                    -->
 
                     <basic-button
                         title="Completadas" 
                         action="nova-tarefa"
                         id="filterPending"
                         variant="outline"
-                        class="border-primary text-primary bg-primary-hover text-white-hover"
                     ></basic-button>
                 </div>
             </div>

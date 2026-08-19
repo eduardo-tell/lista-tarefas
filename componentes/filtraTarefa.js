@@ -7,21 +7,21 @@ export const filtraTarefa = () => {
     
     filterList.querySelectorAll('button').forEach(element => {
         element.addEventListener('click', (event) => {
+            if (event.target.classList.contains('bg-primary')) {
+
+            }
 
             filterList.querySelectorAll('button').forEach(button => {
-                button.classList.remove('active');
+                event.target.classList.remove('bg-primary', 'bg-transparent-hover', 'text-white', 'text-primary', 'text-primary-hover', 'border-primary');
             });
             
-            event.target.classList.add('active');
+            event.target.classList.add('bg-primary', 'bg-transparent-hover', 'text-white', 'text-primary-hover', 'border-primary');
 
-            console.log(event.target.id);
-            
-            
             if (event.target.id === 'filterAll') {
                 tasksAll.forEach(task => {
                     task.classList.remove('hide');
                 });
-            }else if (event.target.id === 'filterPending') {
+            } else if (event.target.id === 'filterPending') {
                 tasksCompleted.forEach(task => {
                     task.classList.add('hide');
                 });

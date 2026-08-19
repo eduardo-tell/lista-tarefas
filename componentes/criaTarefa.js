@@ -70,7 +70,7 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
     colInfo.appendChild(elDataFormatada);
 
     const colAcoes = document.createElement('div');
-    colAcoes.classList.add('col-auto');
+    colAcoes.classList.add('d-flex', 'col-auto', 'gap-2');
 
     const elBotaoConcluir = document.createElement('button');
 
@@ -82,7 +82,7 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
         elBotaoConcluir.textContent = 'Concluir';
     }
 
-    elBotaoConcluir.classList.add('btn', 'border-primary', 'me-2');
+    elBotaoConcluir.classList.add('btn', 'border-primary');
 
     elBotaoConcluir.addEventListener('click', () => concluirTarefa(carregaTarefa, id));
 

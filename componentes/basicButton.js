@@ -40,10 +40,10 @@ class BasicButton extends HTMLElement {
     _getVariantClass() {
         const variant = this.getAttribute('variant') || 'primary';
         const classMap = {
+            outline: 'btn border-primary text-primary text-white-hover bg-primary-hover',
             primary: 'bg-primary bg-secondary-hover text-white',
             secondary: 'bg-secondary bg-default-hover text-default',
             danger: 'bg-danger text-white',
-            outline: 'bg-transparent border border-secondary text-secondary'
         };
         return classMap[variant] || classMap.primary;
     }
@@ -64,7 +64,7 @@ class BasicButton extends HTMLElement {
 
         const hostClasses = this.className; 
 
-        this._button.className = `btn w-100 ${variantClass}`;
+        this._button.className = `btn ${variantClass}`;
         this._button.textContent = title;
         this._button.disabled = isDisabled;
     }
