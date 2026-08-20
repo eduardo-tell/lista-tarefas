@@ -31,7 +31,6 @@ export const handleNovoItem = (evento) => {
 
 export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
     const tarefa = document.createElement('li');
-    // tarefa.classList.add('list-group-item');
 
     if (concluida) {
         tarefa.classList.add('active');
