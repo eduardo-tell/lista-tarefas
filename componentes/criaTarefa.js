@@ -56,14 +56,7 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
 
     const elDataFormatada = document.createElement('p');
     elDataFormatada.classList.add('card-text', 'text-muted', 'mb-0');
-    elDataFormatada.textContent = `Para: ${dataFormatada}`;
-
-    if (!concluida) {
-        const badge = document.createElement('span')
-        badge.classList.add('badge', 'bg-danger', 'ms-2');
-        badge.textContent = 'Pendente';
-        elDataFormatada.appendChild(badge);
-    }
+    elDataFormatada.textContent = `${dataFormatada}`;
 
     colInfo.appendChild(elTitulo);
     colInfo.appendChild(elDataFormatada);
