@@ -5,31 +5,32 @@ import { deletarTarefa } from './deletaTarefa.js';
 export const handleNovoItem = (evento) => {
     evento.preventDefault()
     const tarefas = JSON.parse(localStorage.getItem('tarefas'))||[]
-    const input = document.querySelector('.title-task input')
+    const input = document.querySelector('#title-task input')
     const titulo = input.value
 
-    const calendario = document.querySelector('.date-task input')
-    const data = moment(calendario.value)
-
-    const dataFormatada = data.format('DD/MM/YYYY')
+    const calendario = document.querySelector('#dateTask input');
+    const date = calendario.value
+        ? moment(calendario.value, 'YYYY-MM-DD').format('DD/MM/YYYY')
+        : moment().format('DD/MM/YYYY');
 
     const concluida = false;
 
     const dados = { 
         titulo,
-        dataFormatada,
+        date,
         concluida
     }
 
     const tarefasAtualizadas = [...tarefas, dados];
 
     localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas));
-    input.value = " ";
+    input.value = "";
+    calendario.value = "";
 
     carregaTarefa();
 }
 
-export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
+export const Tarefa = ({ titulo, date, concluida }, id) => {
     const tarefa = document.createElement('li');
 
     if (concluida) {
@@ -43,7 +44,6 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
 
     const cardCorpo = document.createElement('div');
     cardCorpo.classList.add('card-body');
-
     const row = document.createElement('div');
     row.classList.add('row', 'align-items-center');
 
@@ -54,12 +54,12 @@ export const Tarefa = ({ titulo, dataFormatada, concluida }, id) => {
     elTitulo.classList.add('card-title', 'mb-1');
     elTitulo.textContent = titulo;
 
-    const elDataFormatada = document.createElement('p');
-    elDataFormatada.classList.add('card-text', 'text-muted', 'mb-0');
-    elDataFormatada.textContent = `${dataFormatada}`;
+    const elDate = document.createElement('p');
+    elDate.classList.add('card-text', 'text-muted', 'mb-0');
+    elDate.textContent = `${date}`;
 
     colInfo.appendChild(elTitulo);
-    colInfo.appendChild(elDataFormatada);
+    colInfo.appendChild(elDate);
 
     const colAcoes = document.createElement('div');
     colAcoes.classList.add('d-flex', 'col-auto', 'gap-2');
