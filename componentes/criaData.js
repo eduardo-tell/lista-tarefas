@@ -7,7 +7,7 @@ export const criaData = (date) => {
     const dataMoment = moment(date, 'DD/MM/YYYY');
     const secaoPorData = document.createElement('ul');
     secaoPorData.classList.add('list-unstyled');
-    const conteudo = `<h3 class="card-title text-primary fs-4">${dataMoment.format('DD/MM/YYYY') == moment().format('DD/MM/YYYY') ? 'Hoje' : dataMoment.format('DD/MM/YYYY')}</h3>`;
+    const conteudo = `<h3 class="card-title text-primary fs-4 mb-3">${dataMoment.format('DD/MM/YYYY') == moment().format('DD/MM/YYYY') ? 'Hoje' : dataMoment.format('DD/MM/YYYY')}</h3>`;
 
     secaoPorData.innerHTML = conteudo;
 

@@ -1,8 +1,9 @@
 import { handleNovoItem } from './criaTarefa.js'
+import { mesclarClasses } from './encaminhaClasses.js'
 
 class BasicButton extends HTMLElement {
     static get observedAttributes() {
-        return ['title', 'action', 'disabled', 'variant', 'styleClass'];
+        return ['title', 'action', 'disabled', 'variant', 'class'];
     }
 
     constructor() {
@@ -21,7 +22,7 @@ class BasicButton extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue === newValue) return;
+        if (oldValue === newValue || !this.isConnected) return;
         this._render();
     }
 
@@ -62,9 +63,7 @@ class BasicButton extends HTMLElement {
             this._button = button;
         }
 
-        const hostClasses = this.className; 
-
-        this._button.className = `btn ${variantClass}`;
+        this._button.className = mesclarClasses(this, 'btn', variantClass);
         this._button.textContent = title;
         this._button.disabled = isDisabled;
     }

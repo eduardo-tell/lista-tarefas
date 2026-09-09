@@ -81,13 +81,11 @@
             border-width: 2px;
         }
 
-        /*
-        .card-effect {
-            opacity: 0;
-            animation: slideInUp 1s ease-out 0.2s both;
-            animation-delay: var(--delay, 0s);
+        /* Custom elements são inline por padrão; assim class="w-100" no host funciona */
+        basic-button,
+        basic-input {
+            display: block;
         }
-        */
 
         @keyframes slideInUp {
             from {
