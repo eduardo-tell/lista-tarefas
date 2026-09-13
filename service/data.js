@@ -1,3 +1,18 @@
+export const garantirIds = (tarefas) => {
+    let alterou = false;
+    const comId = tarefas.map((tarefa) => {
+        if (tarefa.id) return tarefa;
+        alterou = true;
+        return { ...tarefa, id: crypto.randomUUID() };
+    });
+
+    if (alterou) {
+        localStorage.setItem('tarefas', JSON.stringify(comId));
+    }
+
+    return comId;
+}
+
 export const removeDatasRepetidas = (datas) => { 
     const datasUnicas = []
     datas.forEach((data => { 

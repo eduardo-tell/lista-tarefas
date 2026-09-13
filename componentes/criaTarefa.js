@@ -1,46 +1,52 @@
-import { carregaTarefa } from './carregaTarefa.js';
+import { carregaTarefa, inserirTarefaNaLista } from './carregaTarefa.js';
 import { concluirTarefa } from './concluiTarefa.js';
 import { deletarTarefa } from './deletaTarefa.js';
 
 export const handleNovoItem = (evento) => {
-    evento.preventDefault()
-    const tarefas = JSON.parse(localStorage.getItem('tarefas'))||[]
-    const input = document.querySelector('#title-task input')
-    const titulo = input.value
+    evento.preventDefault();
 
+    const campoTitulo = document.querySelector('#title-task');
+    const titulo = campoTitulo.value.trim();
+
+    if (!titulo) {
+        campoTitulo.setInvalid('Este campo é obrigatório');
+        return;
+    }
+
+    campoTitulo.clearInvalid();
+
+    const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
     const calendario = document.querySelector('#dateTask input');
     const date = calendario.value
         ? moment(calendario.value, 'YYYY-MM-DD').format('DD/MM/YYYY')
         : moment().format('DD/MM/YYYY');
 
-    const concluida = false;
-
-    const dados = { 
+    const dados = {
+        id: crypto.randomUUID(),
         titulo,
         date,
-        concluida
-    }
+        concluida: false
+    };
 
-    const tarefasAtualizadas = [...tarefas, dados];
+    localStorage.setItem('tarefas', JSON.stringify([dados, ...tarefas]));
+    campoTitulo.value = '';
+    calendario.value = '';
 
-    localStorage.setItem('tarefas', JSON.stringify(tarefasAtualizadas));
-    input.value = "";
-    calendario.value = "";
-
-    carregaTarefa();
+    inserirTarefaNaLista(dados);
 }
 
-export const Tarefa = ({ titulo, date, concluida }, id) => {
-    const tarefa = document.createElement('li');
+export const Tarefa = (tarefa) => {
+    const { titulo, date, concluida, id } = tarefa;
+    const elTarefa = document.createElement('li');
+    elTarefa.dataset.taskId = id;
 
     if (concluida) {
-        tarefa.classList.add('active');
+        elTarefa.classList.add('active');
     }
 
     const conteudoWrapper = document.createElement('div');
     conteudoWrapper.classList.add('border-bottom', 'mb-sm-3', 'py-sm-4', 'mb-3', 'pb-3');
     conteudoWrapper.classList.add(`card-effect`, `card--${concluida ? 'completed' : 'pending'}`);
-    conteudoWrapper.style.setProperty('--delay', `${id * 0.5}s`);
 
     const cardCorpo = document.createElement('div');
     cardCorpo.classList.add('card-body');
@@ -75,13 +81,12 @@ export const Tarefa = ({ titulo, date, concluida }, id) => {
     }
 
     elBotaoConcluir.classList.add('btn', 'border-primary');
-
     elBotaoConcluir.addEventListener('click', () => concluirTarefa(carregaTarefa, id));
 
     const elBotaoDeletar = document.createElement('button');
     elBotaoDeletar.classList.add('btn', 'btn-outline-danger');
     elBotaoDeletar.textContent = 'Deletar';
-    elBotaoDeletar.addEventListener('click', () => deletarTarefa(carregaTarefa, id));
+    elBotaoDeletar.addEventListener('click', () => deletarTarefa(id));
 
     colAcoes.appendChild(elBotaoConcluir);
     colAcoes.appendChild(elBotaoDeletar);
@@ -91,7 +96,7 @@ export const Tarefa = ({ titulo, date, concluida }, id) => {
 
     cardCorpo.appendChild(row);
     conteudoWrapper.appendChild(cardCorpo);
-    tarefa.appendChild(conteudoWrapper);
+    elTarefa.appendChild(conteudoWrapper);
 
-    return tarefa
+    return elTarefa;
 }

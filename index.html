@@ -97,6 +97,60 @@
                 transform: translateY(0);
             }
         }
+
+        basic-input.is-invalid .form-control,
+        basic-input .border-danger {
+            border-color: #dc3545 !important;
+        }
+
+        basic-input.is-invalid .form-control:focus {
+            box-shadow: 0 0 0 .25rem rgb(220 53 69 / 20%) !important;
+        }
+
+        basic-input .campo-erro {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 0.35rem;
+        }
+
+        @keyframes input-shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(7px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(4px); }
+        }
+
+        basic-input.input-shake {
+            animation: input-shake 0.45s ease-in-out;
+        }
+
+        [data-list] li.task-exit {
+            overflow: hidden;
+            pointer-events: none;
+            transform-origin: center center;
+            animation: task-exit 0.5s ease-in forwards;
+        }
+
+        [data-list] li.task-exit > * {
+            margin-bottom: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            transition: margin 0.5s ease-in, padding 0.5s ease-in;
+        }
+
+        @keyframes task-exit {
+            from {
+                opacity: 1;
+                transform: scale(1);
+                max-height: 16rem;
+            }
+            to {
+                opacity: 0;
+                transform: scale(0);
+                max-height: 0;
+            }
+        }
     </style>
   </head>
   <body>
@@ -150,7 +204,7 @@
                 </div>
             </div>
 
-            <form id="taskForm" class="mb-3">
+            <form id="taskForm" class="mb-3" novalidate>
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="taskTitle" class="form-label fw-medium">Título</label>

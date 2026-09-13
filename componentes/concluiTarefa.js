@@ -1,9 +1,10 @@
 export const concluirTarefa = (atualiza, id) => {
-    const tarefasCadastradas = JSON.parse(localStorage.getItem('tarefas'))
-    tarefasCadastradas[id].concluida = !tarefasCadastradas[id].concluida;
+    const tarefasCadastradas = JSON.parse(localStorage.getItem('tarefas')) || [];
+    const tarefa = tarefasCadastradas.find((item) => item.id === id);
 
-    localStorage.setItem('tarefas', JSON.stringify(tarefasCadastradas))
-    
+    if (!tarefa) return;
+
+    tarefa.concluida = !tarefa.concluida;
+    localStorage.setItem('tarefas', JSON.stringify(tarefasCadastradas));
     atualiza();
 }
-
