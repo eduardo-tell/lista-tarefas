@@ -1,104 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
+    <!-- Caracteres UTF-8 para acentos do português. -->
     <meta charset="UTF-8" />
+    <!-- Viewport para o layout fluir em celular sem zoom estranho. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=BioRhyme&family=Space+Mono&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link rel="stylesheet" href="./bootstrap.css" />
-    <link rel="stylesheet" href="./styles.css" />
+    <!-- Título da aba: necessário para leitores de tela e para o histórico. -->
+    <title>Lista de tarefas</title>
+    <!-- Descrição curta para buscadores e para tecnologias assistivas. -->
+    <meta name="description" content="Lista de tarefas com persistência local, filtros e agrupamento por data." />
+    <!-- Bootstrap 5.3.8 exatamente o mesmo arquivo do projeto original. -->
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <!-- Tokens, layout novo e regras de acessibilidade do app. -->
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header class="bg-primary py-4 mb-4 shadow-sm">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h1 class="mb-0 text-white">Tarefas</h1>
-                </div>
-                <div class="col-md-6">
-                    <div class="row text-center">
-                        <div class="col-4">
-                            <div class="bg-secondary bg-opacity-10 rounded p-2">
-                                <div class="h4 mb-0" id="totalTasks">0</div>
-                                <small>Todas</small>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-secondary bg-opacity-10 rounded p-2">
-                                <div class="h4 mb-0" id="completedTasks">0</div>
-                                <small>Completadas</small>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="bg-secondary bg-opacity-10 rounded p-2">
-                                <div class="h4 mb-0" id="pendingTasks">0</div>
-                                <small>Pedentes</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Região viva oculta: anuncia mudanças para quem usa leitor de tela. -->
+    <div id="anuncios" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
 
-    <main class="container">
-        <div class="row justify-content-center">
-            <div class="d-flex justify-content-end align-items-center mb-3">
-                <div class="d-flex gap-2" id="filter-list" data-filter-list role="group">
-                    <basic-button
-                        title="Pendentes" 
-                        id="filterPending"
-                        variant="outline"
-                    ></basic-button>
+    <!-- Primeiro foco do teclado: pula o cabeçalho e vai ao conteúdo. -->
+    <a class="skip-link visually-hidden-focusable" href="#conteudo">Pular para o conteúdo</a>
 
-                    <basic-button
-                        title="Completadas" 
-                        id="filterCompleted"
-                        variant="outline"
-                    ></basic-button>
-                </div>
-            </div>
+    <div class="container page-wrap py-0 py-md-5 px-0 px-md-3">
+      <!-- Landmark de cabeçalho: título da página e contadores. -->
+      <header>
+        <app-header></app-header>
+      </header>
 
-            <form id="taskForm" class="mb-3" novalidate>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <label for="taskTitle" class="form-label fw-medium">Título</label>
-                        <basic-input
-                            type="text"
-                            id="title-task" 
-                            placeholder="Título da tarefa"
-                        ></basic-input>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="taskDate" class="form-label fw-medium">Data</label>
-                        <basic-input
-                            type="date"
-                            id="dateTask"
-                            placeholder="adiciona"
-                        ></basic-input>
-                    </div>
-                    <div class="col-md-2 d-flex align-items-end">
-                        <basic-button
-                            title="Adicionar" 
-                            action="nova-tarefa"
-                            class="w-100"
-                        ></basic-button>
-                    </div>
-                </div>
-            </form>
-            
-            <div data-list>
-            </div>
-        </div>
-    </main>
+      <!-- Landmark principal: formulário, filtros e lista. -->
+      <main id="conteudo" class="mt-2 mt-md-4 d-flex flex-column gap-2 gap-md-4" tabindex="-1">
+        <!-- Cadastro de novas tarefas. -->
+        <app-task-form></app-task-form>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
-    <script type="module" src="./main.js"></script>
+        <!-- Filtros Todas / Pendentes / Concluídas. -->
+        <app-task-filters></app-task-filters>
+
+        <!-- Lista agrupada por data (ou estado vazio). -->
+        <app-task-list></app-task-list>
+      </main>
+    </div>
+
+    <!-- Diálogo modal de exclusão, fora do main para não aninhar landmarks. -->
+    <app-confirm-dialog></app-confirm-dialog>
+
+    <!-- Módulos ES: o navegador carrega main.js, que registra os componentes. -->
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

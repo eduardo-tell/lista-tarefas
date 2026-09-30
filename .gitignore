@@ -1,0 +1,12 @@
+# Sistema operacional: arquivos temporários do Windows e macOS não devem ir para o Git.
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editores: pastas locais de configuração não fazem parte da aplicação.
+.vscode/
+.idea/
+
+# Logs e caches: resíduos de ferramentas de desenvolvimento.
+*.log
+.cache/

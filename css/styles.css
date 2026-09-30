@@ -1,0 +1,546 @@
+/* ==========================================================================
+   Tokens do projeto
+   Sobrescrevem o Bootstrap para a paleta pedida, sem alterar bootstrap.css.
+   ========================================================================== */
+
+:root {
+    /* Cor principal (teal). Usada em header, botões primários e ênfases. */
+    --bs-primary: #29A29D;
+    /* Versão RGB da primária, necessária para opacidades do Bootstrap (rgba). */
+    --bs-primary-rgb: 41, 162, 157;
+    /* Cor secundária (verde-claro). Usada em chips e hovers suaves. */
+    --bs-secondary: #A3F7BF;
+    /* Versão RGB da secundária, para fundos translúcidos. */
+    --bs-secondary-rgb: 163, 247, 191;
+    /* Texto padrão, quase preto-azulado, para contraste sobre fundo claro. */
+    --bs-body-color: #222831;
+    /* Perigo do projeto (vermelho-rosado), substitui o vermelho padrão do Bootstrap. */
+    --bs-danger: #C56868;
+    /* RGB do perigo, para sombras de foco e fundos suaves de erro. */
+    --bs-danger-rgb: 197, 104, 104;
+    /* Alias do projeto: mesma cor da secundária, para manter o vocabulário antigo. */
+    --tertiary: #A3F7BF;
+    /* Fundo da página e de superfícies claras. */
+    --default: #FCFCFC;
+    /* Sombra leve para cartões; existe para elevar a UI sem poluir o layout. */
+    --shadow-card: 0 12px 40px rgba(34, 40, 49, 0.08);
+}
+
+/* Fundo geral da aplicação. */
+body {
+    background-color: var(--default);
+    color: var(--bs-body-color);
+}
+
+/* Limita a largura de leitura; números grandes demais cansam o olho. */
+.page-wrap {
+    max-width: 760px;
+}
+
+/* ==========================================================================
+   Acessibilidade: foco visível e pular conteúdo
+   ========================================================================== */
+
+/* Outline forte no foco de teclado; mouse não precisa do mesmo destaque. */
+:focus-visible {
+    outline: 3px solid var(--bs-primary);
+    outline-offset: 3px;
+}
+
+/* Link "pular para o conteúdo": oculto até receber Tab. */
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 10;
+    background: var(--default);
+    color: var(--bs-body-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+/* ==========================================================================
+   Utilitários de cor (os mesmos nomes do projeto original)
+   ========================================================================== */
+
+.bg-primary { background-color: var(--bs-primary) !important; }
+.bg-secondary { background-color: var(--bs-secondary) !important; }
+.bg-tertiary { background-color: var(--tertiary) !important; }
+.bg-default { background-color: var(--default) !important; }
+.bg-danger { background-color: var(--bs-danger) !important; }
+
+.bg-primary-hover:hover { background-color: var(--bs-primary) !important; }
+.bg-secondary-hover:hover { background-color: #237d79 !important; }
+.bg-tertiary-hover:hover { background-color: var(--tertiary) !important; }
+.bg-default-hover:hover { background-color: var(--default) !important; }
+
+.text-primary { color: var(--bs-primary) !important; }
+.text-secondary { color: var(--bs-secondary) !important; }
+.text-tertiary { color: var(--tertiary) !important; }
+.text-default { color: var(--default) !important; }
+.text-danger { color: var(--bs-danger) !important; }
+
+.text-primary-hover:hover { color: var(--bs-primary) !important; }
+.text-white-hover:hover { color: #fff !important; }
+
+.border-primary { border-color: var(--bs-primary) !important; }
+.border-secondary { border-color: var(--bs-secondary) !important; }
+.border-danger { border-color: var(--bs-danger) !important; }
+
+/* ==========================================================================
+   Controles
+   ========================================================================== */
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgb(41 162 157 / 25%) !important;
+    border-color: var(--bs-primary) !important;
+}
+
+.btn {
+    font-weight: 600;
+    border-radius: var(--bs-border-radius-sm);
+    border-width: 1px;
+    min-height: 32px;
+    padding: 0.25rem 0.5rem;
+    font-size: max(11px, 12px);
+}
+
+@media (min-width: 768px) {
+    .btn {
+        border-radius: 0.8rem;
+        border-width: 2px;
+        min-height: 44px;
+        padding: 0.375rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .form-control {
+        min-height: calc(1.5em + 1rem + 2px);
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: var(--bs-border-radius-lg);
+    }
+}
+
+app-button {
+    display: inline-block;
+}
+
+app-input {
+    display: block;
+    width: 100%;
+}
+
+app-button.w-100 {
+    display: block;
+    width: 100%;
+}
+
+app-button.w-100 .btn {
+    width: 100%;
+}
+
+app-header,
+app-task-form,
+app-task-filters,
+app-task-list,
+app-confirm-dialog {
+    display: block;
+}
+
+/* ==========================================================================
+   Layout próprio deste projeto (diferente do original, mesma paleta)
+   ========================================================================== */
+
+.hero-card {
+    background:
+        radial-gradient(circle at top right, rgba(163, 247, 191, 0.45), transparent 32%),
+        var(--bs-primary);
+    box-shadow: var(--shadow-card);
+}
+
+.hero-kicker {
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--bs-secondary);
+    margin: 0;
+}
+
+.hero-title {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.stat-chip {
+    background: rgba(163, 247, 191, 0.28);
+    border-radius: 1rem;
+    padding: 0.75rem 0.5rem;
+    text-align: center;
+    color: #fff;
+}
+
+.stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+}
+
+.panel-card {
+    background: #fff;
+    box-shadow: var(--shadow-card);
+}
+
+/* Três faixas: rótulo, controle, ajuda. O botão ocupa só a faixa do controle. */
+.task-form-grid {
+    display: grid;
+    gap: 0.35rem 1rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "label-title"
+        "input-title"
+        "help-title"
+        "label-date"
+        "input-date"
+        "help-date"
+        "action";
+}
+
+.task-form-grid .form-label {
+    margin-bottom: 0;
+}
+
+.task-form-grid__label-title { grid-area: label-title; }
+.task-form-grid__input-title { grid-area: input-title; }
+.task-form-grid__help-title { grid-area: help-title; }
+.task-form-grid__label-date { grid-area: label-date; }
+.task-form-grid__input-date { grid-area: input-date; }
+.task-form-grid__help-date { grid-area: help-date; }
+.task-form-grid__action { grid-area: action; }
+
+@media (min-width: 768px) {
+    .task-form-grid {
+        grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) minmax(7rem, 2fr);
+        grid-template-areas:
+            "label-title label-date ."
+            "input-title input-date action"
+            "help-title  help-date  .";
+        align-items: start;
+    }
+}
+
+.filter-bar {
+    justify-content: flex-end;
+}
+
+.date-group {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.date-group::before {
+    content: "";
+    position: absolute;
+    left: 0.35rem;
+    top: 1.4rem;
+    bottom: 0;
+    width: 2px;
+    background: rgba(41, 162, 157, 0.25);
+}
+
+.date-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.date-dot {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background: var(--bs-primary);
+    box-shadow: 0 0 0 4px rgba(41, 162, 157, 0.15);
+    margin-left: -1.25rem;
+}
+
+.task-card {
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    border-left: 6px solid var(--bs-primary);
+}
+
+app-task-item.is-done .task-card {
+    border-left-color: var(--bs-secondary);
+    opacity: 0.92;
+}
+
+app-task-item.is-done .task-title {
+    text-decoration: line-through;
+    color: #5b616b;
+}
+
+.task-meta {
+    color: #5b616b;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.empty-state {
+    background: #fff;
+    box-shadow: var(--shadow-card);
+    color: #5b616b;
+}
+
+.campo-erro {
+    color: var(--bs-danger);
+    font-size: 0.85rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0;
+}
+
+app-input.is-invalid .form-control {
+    border-color: var(--bs-danger) !important;
+}
+
+app-input.is-invalid .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgb(197 104 104 / 25%) !important;
+}
+
+@keyframes input-shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(4px); }
+}
+
+app-input.input-shake {
+    animation: input-shake 0.45s ease-in-out;
+}
+
+.confirm-dialog {
+    background: #fff;
+    color: var(--bs-body-color);
+    box-shadow: var(--shadow-card);
+    max-width: 28rem;
+    width: calc(100% - 2rem);
+}
+
+/* Dialog fechado não deve permanecer na árvore de acessibilidade. */
+dialog.confirm-dialog:not([open]) {
+    display: none;
+}
+
+.confirm-dialog::backdrop {
+    background: rgba(34, 40, 49, 0.45);
+}
+
+app-button[pressed="true"] .btn {
+    box-shadow: 0 0 0 2px rgba(41, 162, 157, 0.2);
+}
+
+/* rounded-md-4 não existe no Bootstrap 5.3; replica rounded-4 a partir de md. */
+@media (min-width: 768px) {
+    .rounded-md-4 {
+        border-radius: var(--bs-border-radius-xl) !important;
+    }
+}
+
+/* ==========================================================================
+   Mobile: faixa inteira, textos −2px (mín. 11px), formulário e botões compactos
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+    html,
+    body {
+        font-size: max(11px, 14px);
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    .page-wrap.container {
+        max-width: 100%;
+        width: 100%;
+        overflow-x: clip;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .stats-grid {
+        display: flex;
+        gap: 0.35rem;
+        width: 100%;
+    }
+
+    .stats-grid > * {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .stat-chip {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .stat-label {
+        font-size: 11px;
+        display: block;
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-card {
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .panel-card,
+    app-header,
+    app-task-form,
+    .task-form-grid,
+    app-input {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    app-input input {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+    }
+
+    .hero-card .stat-chip {
+        padding: 0.45rem 0.2rem;
+        border-radius: 0.7rem;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .stats-grid > * {
+        min-width: 0;
+    }
+
+    .hero-title {
+        font-size: max(11px, calc(1.75rem - 2px));
+    }
+
+    .stat-number {
+        font-size: max(11px, calc(1.5rem - 2px));
+    }
+
+    .h1, h1, .h2, h2, .h3, h3, .h4, h4, .h5, h5, .h6, h6,
+    .form-label, .form-text, .form-control, .date-heading,
+    .task-title, .task-meta, .empty-state, .campo-erro {
+        font-size: max(11px, calc(1em - 2px));
+    }
+
+    .h5, h5 {
+        font-size: max(11px, calc(1.25rem - 2px));
+    }
+
+    .h4, h4,
+    .date-heading {
+        font-size: max(11px, calc(1.5rem - 2px));
+    }
+
+    .form-label {
+        font-size: max(11px, 12px);
+        margin-bottom: 0.15rem;
+    }
+
+    .form-text,
+    .campo-erro {
+        font-size: 11px;
+        margin-top: 0.15rem;
+    }
+
+    .form-control,
+    .form-control-lg,
+    input[type="date"] {
+        min-height: 36px;
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 0.3rem 0.6rem;
+        font-size: max(11px, 14px);
+    }
+
+    .task-form-grid {
+        gap: 0.2rem 0.75rem;
+    }
+
+    .filter-bar {
+        justify-content: stretch;
+        gap: 0.25rem;
+    }
+
+    .filter-bar app-button {
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .filter-bar app-button .btn {
+        width: 100%;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+        font-size: 11px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .empty-state,
+    .empty-state p {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .date-group {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+    }
+
+    .date-heading {
+        margin-bottom: 0.5rem;
+    }
+
+    .task-actions {
+        gap: 0.35rem;
+    }
+}
+
+/* ==========================================================================
+   Movimento reduzido (WCAG 2.3.3)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
